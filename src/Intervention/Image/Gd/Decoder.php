@@ -42,6 +42,11 @@ class Decoder extends \Intervention\Image\AbstractDecoder
             case 'image/gif':
                 $core = @imagecreatefromgif($path);
                 break;
+            case 'image/svg+xml':
+                throw new \Intervention\Image\Exception\NotReadableException(
+                    "Unsupported image SVG type. GD/PHP installation does not support SVG format."
+                );
+                break;
 
             case 'image/webp':
             case 'image/x-webp':
